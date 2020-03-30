@@ -20,9 +20,11 @@ class PokemonList extends Component {
 
     render() {
         const { pokemons } = this.state;
+        const { status } = this.props;
         return (
             <>
                 <h4>Pokemon List</h4>
+                <p>status: {status.toString()}</p>
                 <ul>
                     {pokemons.map((pokemon, index) => (
                         <li key={index}>{pokemon}</li>

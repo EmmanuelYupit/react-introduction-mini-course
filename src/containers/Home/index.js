@@ -1,18 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import selectors from './selectors';
 import PokemonList from '../../components/Lists/PokemonList';
 import DeletedList from '../../components/Lists/DeletedList';
 
-const Home = () => (
-    <div className="header">
-        <h1>Hello World!</h1>
-        <div className="container">
-            <div className="poke-list">
-                <PokemonList />
-            </div>
-            <div className="poke-list">
-                <DeletedList />
+const App = props => {
+    return (
+        <div className="header">
+            <h1>Hello World!</h1>
+            <div className="container">
+                <div className="poke-list">
+                    <PokemonList {...props} />
+                </div>
+                <div className="poke-list">
+                    <DeletedList />
+                </div>
             </div>
         </div>
-    </div>
-);
-export default Home;
+    );
+};
+
+export default connect(selectors.propsSelector)(App);
