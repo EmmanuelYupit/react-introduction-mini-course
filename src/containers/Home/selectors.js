@@ -1,3 +1,6 @@
-const propsSelector = ({ app: { status } }) => ({ status });
+const propsSelector = ({ app: { pokemons, deletedPokemons } }) => ({
+    pokemons,
+    deletedPokemons,
+});
 
 export default { propsSelector };

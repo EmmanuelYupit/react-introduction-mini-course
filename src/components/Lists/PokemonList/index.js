@@ -1,38 +1,26 @@
-import React, { Component } from 'react';
-class PokemonList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pokemons: [
-                'Bulbasaur',
-                'Ivysaur',
-                'Venusaur',
-                'Charmander',
-                'Charmeleon',
-                'Charizard',
-                'Squirtle',
-                'Wartortle',
-                'Blastoise',
-                'Metapod',
-            ],
-        };
-    }
+import React from 'react';
+const PokemonList = props => {
+    const { onSetList, pokemons, onSetDeletedList, deletedPokemons } = props;
+    const handleClick = id => {
+        const pokemonsCopy = pokemons.filter((pokemon, index) => index !== id);
+        onSetList(pokemonsCopy);
+        const deletedPokemonsCopy = deletedPokemons;
+        deletedPokemonsCopy.push(pokemons[id]);
+        onSetDeletedList(deletedPokemonsCopy);
+    };
 
-    render() {
-        const { pokemons } = this.state;
-        const { status } = this.props;
-        return (
-            <>
-                <h4>Pokemon List</h4>
-                <p>status: {status.toString()}</p>
-                <ul>
-                    {pokemons.map((pokemon, index) => (
-                        <li key={index}>{pokemon}</li>
-                    ))}
-                </ul>
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <h4>Pokemon List</h4>
+            <ul>
+                {pokemons.map((pokemon, index) => (
+                    <li key={index} onClick={() => handleClick(index)}>
+                        {pokemon}
+                    </li>
+                ))}
+            </ul>
+        </>
+    );
+};
 
 export default PokemonList;

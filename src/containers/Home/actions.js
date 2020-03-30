@@ -2,10 +2,11 @@ import createActions from '../../services/createActions';
 
 const prefix = '@react-intro/app';
 
-const types = ['SET_STATUS'];
+const types = ['SET_LIST', 'SET_DELETED_LIST'];
 
-const { setStatus } = createActions(prefix, types);
+const { setList, setDeletedList } = createActions(prefix, types);
 
 export default {
-    setStatus,
+    setList,
+    setDeletedList,
 };

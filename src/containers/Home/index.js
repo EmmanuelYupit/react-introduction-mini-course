@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import dispatcher from './dispatcher';
 import selectors from './selectors';
 import PokemonList from '../../components/Lists/PokemonList';
 import DeletedList from '../../components/Lists/DeletedList';
@@ -13,11 +14,11 @@ const App = props => {
                     <PokemonList {...props} />
                 </div>
                 <div className="poke-list">
-                    <DeletedList />
+                    <DeletedList {...props} />
                 </div>
             </div>
         </div>
     );
 };
 
-export default connect(selectors.propsSelector)(App);
+export default connect(selectors.propsSelector, dispatcher)(App);
