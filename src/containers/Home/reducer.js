@@ -14,6 +14,9 @@ const initialState = {
         'Metapod',
     ],
     deletedPokemons: [],
+    likedPokemons: [], 
+    unlikedPokemons: [], 
+
 };
 
 function reducer(state = initialState, { type, payload }) {
@@ -22,6 +25,10 @@ function reducer(state = initialState, { type, payload }) {
             return { ...state, pokemons: [...payload] };
         case actions.setDeletedList.type:
             return { ...state, deletedPokemons: [...payload] };
+        case actions.setLikedPokemons.type:
+            return { ...state, likedPokemons: [...payload] };
+        case actions.setUnlikedPokemons.type:
+            return { ...state, unlikedPokemons: [...payload] };
         default:
             return state;
     }
